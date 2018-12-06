@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Population Calculator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'calculator/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1>You are welcome to population calculator tool</h1>
+            <p>Bu proqram Amerikada insan artimini hesablayir</p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                {% if error_message %}
+                    <div class="alert alert-danger">{{error_message}}</div>
+                {% endif %}
+                <form action="" method="post">
+                    <div class="form-group">
+                        <label for="year">Il daxil edin:</label>
+                        <input type="number" placeholder="buraya ili daxil edin..." name="year" id="year" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary form-control">Hesabla</button>
+                    </div>
+                    {% csrf_token %}
+                </form>
+            </div>
+            <div class="col-lg-6">
+                {% if result %}
+                    <div class="alert alert-success">{{result}}</div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
